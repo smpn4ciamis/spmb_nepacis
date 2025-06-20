@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pengumuman PPDB 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .zoom-in {
+      animation: zoomIn 0.5s ease-out forwards;
+    }
+    .hover-scale:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+    .status-icon {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-blue-100 to-gray-100 font-sans min-h-screen">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold">Pengumuman PPDB 2025</h1>
+      <p class="mt-3 text-lg md:text-xl">Cek hasil penerimaan peserta didik baru dengan cepat dan mudah</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 py-10">
+    <!-- Search Section -->
+    <section class="bg-white rounded-xl shadow-2xl p-8 mb-10 max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">Cari Status Pendaftaran</h2>
+      <div class="flex flex-col md:flex-row gap-4">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Masukkan ID Pendaftaran, NISN, atau Nama"
+          class="border-2 border-gray-300 rounded-lg px-4 py-3 flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+        >
+        <button
+          onclick="searchResult()"
+          class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition flex items-center"
+        >
+          <i data-feather="search" class="w-5 h-5 mr-2"></i>Cari Hasil
+        </button>
+      </div>
+    </section>
+
+    <!-- Result Section -->
+    <section id="resultSection" class="hidden max-w-3xl mx-auto">
+      <div id="resultCard" class="bg-white rounded-xl shadow-2xl p-8 zoom-in hover-scale"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <p>© 2025 PPDB Online. All rights reserved.</p>
+      <p class="mt-3">Kontak: <a href="mailto:info@ppdbsekolah.id" class="underline hover:text-blue-300">info@ppdbsekolah.id</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Sample data for demonstration
+    const announcements = [
+      { id: "PPDB001", nisn: "1234567890", name: "Ahmad Fauzi", status: "accepted", message: "Selamat! Anda diterima di SMA Negeri 1 untuk tahun ajaran 2025/2026." },
+      { id: "PPDB002", nisn: "0987654321", name: "Siti Nurhaliza", status: "rejected", message: "Maaf, Anda tidak diterima. Silakan coba lagi tahun depan." },
+      { id: "PPDB003", nisn: "1122334455", name: "Budi Santoso", status: "accepted", message: "Selamat! Anda diterima di SMA Negeri 1 untuk tahun ajaran 2025/2026." },
+      { id: "PPDB004", nisn: "6677889900", name: "Rina Amelia", status: "rejected", message: "Maaf, Anda tidak diterima. Silakan coba lagi tahun depan." },
+    ];
+
+    // Function to search and display result
+    function searchResult() {
+      const searchInput = document.getElementById("searchInput").value.toLowerCase();
+      const resultSection = document.getElementById("resultSection");
+      const resultCard = document.getElementById("resultCard");
+
+      // Find matching result
+      const result = announcements.find(item => 
+        item.id.toLowerCase() === searchInput ||
+        item.nisn.toLowerCase() === searchInput ||
+        item.name.toLowerCase() === searchInput
+      );
+
+      // Display result
+      resultSection.classList.remove("hidden");
+      if (result) {
+        resultCard.className = `bg-white rounded-xl shadow-2xl p-8 zoom-in hover-scale border-l-8 ${result.status === "accepted" ? "border-green-500" : "border-red-500"}`;
+        resultCard.innerHTML = `
+          <div class="flex items-center mb-4">
+            <i data-feather="${result.status === "accepted" ? "check-circle" : "x-circle"}" class="w-10 h-10 ${result.status === "accepted" ? "text-green-500" : "text-red-500"} status-icon mr-3"></i>
+            <h3 class="text-2xl font-bold text-gray-800">${result.name}</h3>
+          </div>
+          <p class="text-gray-600 text-lg">No. Pendaftaran: ${result.id}</p>
+          <p class="text-gray-600 text-lg">NISN: ${result.nisn}</p>
+          <p class="mt-4 text-xl font-semibold ${result.status === "accepted" ? "text-green-600" : "text-red-600"}">
+            Status: ${result.status === "accepted" ? "Diterima" : "Tidak Diterima"}
+          </p>
+          <p class="mt-2 text-gray-700">${result.message}</p>
+          <a
+            href="hasil_ppdb/${result.id}.pdf"
+            target="_blank"
+            class="mt-6 inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition"
+          >
+            <i data-feather="download" class="w-5 h-5 mr-2"></i>Unduh Hasil (PDF)
+          </a>
+        `;
+      } else {
+        resultCard.className = "bg-white rounded-xl shadow-2xl p-8 zoom-in hover-scale border-l-8 border-red-500";
+        resultCard.innerHTML = `
+          <div class="flex items-center mb-4">
+            <i data-feather="alert-circle" class="w-10 h-10 text-red-500 status-icon mr-3"></i>
+            <h3 class="text-2xl font-bold text-red-600">Data Tidak Ditemukan</h3>
+          </div>
+          <p class="text-gray-700 text-lg">Maaf, ID Pendaftaran, NISN, atau Nama yang Anda masukkan tidak ditemukan. Silakan periksa kembali.</p>
+        `;
+      }
+      // Re-initialize Feather Icons
+      feather.replace();
+    }
+
+    // Initialize Feather Icons
+    feather.replace();
+  </script>
+</body>
+</html>
