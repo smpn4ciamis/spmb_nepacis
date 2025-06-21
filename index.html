@@ -33,6 +33,11 @@
       50% { border-color: rgba(209, 250, 229, 0.8); }
       100% { border-color: rgba(209, 250, 229, 0.3); }
     }
+    @keyframes pulseText {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
     .fade-in {
       animation: fadeIn 0.8s ease-out forwards;
     }
@@ -50,6 +55,9 @@
     }
     .border-pulse {
       animation: borderPulse 2s infinite;
+    }
+    .pulse-text {
+      animation: pulseText 1.5s infinite;
     }
     .hover-scale:hover {
       transform: scale(1.02);
@@ -131,6 +139,20 @@
       background-position: center;
       background-size: cover;
     }
+    .splash {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(59, 130, 246, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeIn 0.3s ease-out;
+    }
     body {
       overflow-x: hidden;
       overflow-y: auto;
@@ -142,6 +164,12 @@
 <body class="bg-gradient-to-br from-blue-50 to-sky-100 font-sans min-h-screen text-gray-800">
   <!-- Particles Background -->
   <div id="particles" class="fixed inset-0"></div>
+
+  <!-- Splash Screen -->
+  <div id="splashScreen" class="splash hidden">
+    <i data-feather="loader" class="w-12 h-12 text-white animate-spin mb-4"></i>
+    <h2 class="text-2xl font-semibold text-white pulse-text">Memproses Hasil...</h2>
+  </div>
 
   <!-- Header -->
   <header class="bg-blue-300 text-gray-800 py-8 relative overflow-hidden parallax">
@@ -233,12 +261,13 @@
     ];
 
     // Countdown timer
-    const announcementDate = new Date("2025-06-25T09:00:00+07:00").getTime();
+    const announcementDate = new Date("2025-06-21T09:00:00+07:00").getTime();
     const countdownSection = document.getElementById("countdownSection");
     const searchSection = document.getElementById("searchSection");
     const searchInput = document.getElementById("searchInput");
     const searchButton = document.getElementById("searchButton");
     const searchMessage = document.getElementById("searchMessage");
+    const splashScreen = document.getElementById("splashScreen");
 
     let prevValues = { days: null, hours: null, minutes: null, seconds: null };
 
@@ -342,12 +371,16 @@
         return;
       }
 
-      // Show loading state
+      // Show splash screen and loading state
+      splashScreen.classList.remove("hidden");
       searchButton.disabled = true;
       searchButton.innerHTML = '<i data-feather="loader" class="w-6 h-6 mr-2 animate-spin"></i>Sedang mencari...';
       feather.replace();
 
       setTimeout(() => {
+        // Hide splash screen
+        splashScreen.classList.add("hidden");
+
         // Find matching result
         const result = announcements.find(item => 
           item.id.toLowerCase() === searchInputValue ||
