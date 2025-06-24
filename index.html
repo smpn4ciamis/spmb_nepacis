@@ -86,7 +86,7 @@
 
         .hero {
             background: linear-gradient(rgba(135, 206, 235, 0.6), rgba(152, 255, 152, 0.6)), url('https://via.placeholder.com/1200x600?text=SMPN+4+Ciamis') no-repeat center/cover;
-            height: 400px;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -194,11 +194,12 @@
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             border: 1px solid #E6F3FA;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background 0.3s ease;
         }
 
         .info-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
+            background: #D0E8F5;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -218,6 +219,11 @@
             font-size: 1.2rem;
             width: 1.2rem;
             text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover i {
+            transform: rotate(10deg);
         }
 
         .info-card .info-item {
@@ -230,27 +236,30 @@
             margin-right: 0.5rem;
         }
 
-        .info-card ul {
-            list-style: none;
+        .fade-in-text {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        .info-card ul li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
-            padding-left: 0;
-            text-transform: uppercase;
-            font-weight: 600;
+        .info-card .fade-in-text {
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
-        .info-card ul li::before {
-            content: "•";
-            color: #87CEEB;
-            font-weight: bold;
-            display: inline-block;
-            width: 1.2rem;
-            margin-right: 0.5rem;
-            text-align: center;
+        .section.visible .fade-in-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .warning {
@@ -283,6 +292,11 @@
             padding: 1.5rem;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .search-form:hover {
+            transform: scale(1.02);
         }
 
         .search-form input {
@@ -292,17 +306,23 @@
             border-radius: 8px;
             margin-bottom: 1rem;
             font-size: 1rem;
-            transition: border-color 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .search-form input:focus {
             border-color: #98FF98;
+            box-shadow: 0 0 5px rgba(152, 255, 152, 0.5);
             outline: none;
         }
 
         .search-form input::placeholder {
             color: #87CEEB;
             opacity: 0.7;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0.3; }
         }
 
         .search-form button {
@@ -317,12 +337,13 @@
             display: inline-flex;
             align-items: center;
             gap: 0.3rem;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .search-form button:hover {
             transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .search-form button i {
@@ -335,13 +356,57 @@
 
         #search-result {
             margin-top: 1.5rem;
-            background: white;
-            padding: 1.5rem;
+            background: linear-gradient(90deg, #87CEEB, #98FF98);
+            padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
             display: none;
-            animation: slideIn 0.5s ease-out;
+            animation: slideUp 0.6s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #search-result:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            animation: pulse 0.5s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: scale(1.03); }
+            to { transform: scale(1.05); }
+        }
+
+        #search-result p {
+            margin: 0.5rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        #search-result p i {
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        #search-result p strong {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .loader {
@@ -379,11 +444,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
@@ -391,7 +451,7 @@
 
         @media (max-width: 768px) {
             .hero {
-                height: 300px;
+                height: 200px;
             }
 
             .hero-content h1 {
@@ -453,6 +513,20 @@
                 padding: 0.6rem 1.5rem;
                 font-size: 0.9rem;
             }
+
+            #search-result p {
+                font-size: 1.2rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            #search-result p i {
+                font-size: 1.2rem;
+            }
+
+            #search-result p strong {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -489,22 +563,20 @@
         <div class="info-grid">
             <div class="info-card">
                 <h3><i class="fas fa-calendar-alt"></i> JADWAL</h3>
-                <div class="info-item"><i class="fas fa-clock"></i> TANGGAL: 1–3 JULI 2025</div>
-                <div class="info-item"><i class="fas fa-clock"></i> WAKTU: 08.00–14.00 WIB</div>
-                <div class="info-item"><i class="fas fa-map-marker-alt"></i> LOKASI: KAMPUS SMPN 4 CIAMIS</div>
+                <div class="info-item fade-in-text"><i class="fas fa-clock"></i> TANGGAL: 1–3 JULI 2025</div>
+                <div class="info-item fade-in-text"><i class="fas fa-clock"></i> WAKTU: 08.00–14.00 WIB</div>
+                <div class="info-item fade-in-text"><i class="fas fa-map-marker-alt"></i> LOKASI: KAMPUS SMPN 4 CIAMIS</div>
             </div>
             <div class="info-card">
-                <h3><i class="fas fa-file-alt"></i> DOKUMEN YANG DIBAWA</h3>
-                <ul>
-                    <li><i class="fas fa-file"></i> PRINT OUT PENDAFTARAN</li>
-                    <li><i class="fas fa-file"></i> PRINT OUT BUKTI DITERIMA</li>
-                    <li><i class="fas fa-file"></i> FOTOKOPI IJAZAH YANG DILEGALISIR (JIKA ADA)/SURAT KETERANGAN LULUS (SKL)</li>
-                    <li><i class="fas fa-file"></i> FOTOKOPI KARTU KELUARGA (3 RANGKAP)</li>
-                    <li><i class="fas fa-file"></i> FOTOKOPI KTP ORANG TUA (3 RANGKAP)</li>
-                    <li><i class="fas fa-file"></i> FOTOKOPI AKTE KELAHIRAN (3 RANGKAP)</li>
-                    <li><i class="fas fa-file"></i> FOTOKOPI KIP/PKH/KIS/DTKS JIKA MEMILIKI (3 RANGKAP)</li>
-                    <li><i class="fas fa-folder"></i> SEMUA BERKAS DIMASUKKAN KE MAP HIJAU (PUTRA) ATAU MERAH (PUTRI)</li>
-                </ul>
+                <h3><i class="fas fa-book"></i> DOKUMEN YANG DIBAWA</h3>
+                <div class="info-item fade-in-text"><i class="fas fa-clipboard"></i> PRINT OUT PENDAFTARAN</div>
+                <div class="info-item fade-in-text"><i class="fas fa-clipboard-check"></i> PRINT OUT BUKTI DITERIMA</div>
+                <div class="info-item fade-in-text"><i class="fas fa-id-card"></i> FOTOKOPI IJAZAH YANG DILEGALISIR (JIKA ADA)/SURAT KETERANGAN LULUS (SKL)</div>
+                <div class="info-item fade-in-text"><i class="fas fa-address-card"></i> FOTOKOPI KARTU KELUARGA (3 RANGKAP)</div>
+                <div class="info-item fade-in-text"><i class="fas fa-id-card-alt"></i> FOTOKOPI KTP ORANG TUA (3 RANGKAP)</div>
+                <div class="info-item fade-in-text"><i class="fas fa-birthday-cake"></i> FOTOKOPI AKTE KELAHIRAN (3 RANGKAP)</div>
+                <div class="info-item fade-in-text"><i class="fas fa-hand-holding-usd"></i> FOTOKOPI KIP/PKH/KIS/DTKS JIKA MEMILIKI (3 RANGKAP)</div>
+                <div class="info-item fade-in-text"><i class="fas fa-folder"></i> SEMUA BERKAS DIMASUKKAN KE MAP HIJAU (PUTRA) ATAU MERAH (PUTRI)</div>
             </div>
         </div>
         <div class="warning">
@@ -568,11 +640,11 @@
 
         // Student data (5 samples)
         const students = [
-            { name: "ADAM NURFAQIH", class: "7F", noInduk: "2025001" },
-            { name: "TAFIF MUHAMAD ARI KASIDI", class: "7A", noInduk: "2025002" },
-            { name: "MUHAMAD RIZQI AKHBAR", class: "7G", noInduk: "2025003" },
-            { name: "NAJRIL ILHAM SAPUTRA", class: "7D", noInduk: "2025004" },
-            { name: "RIZKI MAULANA", class: "7G", noInduk: "2025005" }
+            { name: "ADAM NURFAQIH", class: "7F" },
+            { name: "TAFIF MUHAMAD ARI KASIDI", class: "7A" },
+            { name: "MUHAMAD RIZQI AKHBAR", class: "7G" },
+            { name: "NAJRIL ILHAM SAPUTRA", class: "7D" },
+            { name: "RIZKI MAULANA", class: "7G" }
         ];
 
         // Search class function
@@ -592,9 +664,10 @@
 
                 if (found) {
                     resultDiv.innerHTML = `
-                        <p><i class="fas fa-user-graduate" style="color: #87CEEB;"></i> <strong>NAMA:</strong> ${found.name}</p>
-                        <p><i class="fas fa-chalkboard-teacher" style="color: #87CEEB;"></i> <strong>KELAS:</strong> ${found.class}</p>
-                        <p><i class="fas fa-id-card" style="color: #87CEEB;"></i> <strong>NOMOR INDUK:</strong> ${found.noInduk}</p>
+                        <p>
+                            <i class="fas fa-user"></i> <strong>NAMA:</strong> ${found.name}
+                            <i class="fas fa-chalkboard" style="margin-left: 1rem;"></i> <strong>KELAS:</strong> ${found.class}
+                        </p>
                     `;
                 } else {
                     resultDiv.innerHTML = '<p><i class="fas fa-exclamation-circle" style="color: #87CEEB;"></i> DATA TIDAK DITEMUKAN. SILAKAN PERIKSA NAMA ATAU HUBUNGI PANITIA.</p>';
