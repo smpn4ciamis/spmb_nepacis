@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DAFTAR ULANG SPMB SMPN 4 CIAMIS</title>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,7 +46,7 @@
         }
 
         .logo {
-            background: rgba(255, 255, 255, 0.1); /* Fallback latar jika logo transparan */
+            background: rgba(255, 255, 255, 0.1);
             padding: 5px;
             border-radius: 5px;
         }
@@ -146,6 +146,7 @@
             gap: 0.3rem;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin: 0 0.5rem;
         }
 
         .cta-button:hover {
@@ -207,7 +208,7 @@
 
         .info-card:hover {
             transform: scale(1.02);
-            background: #D0E8F5;
+            background: linear-gradient(135deg, #E6F3FA, #D0E8F5);
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
@@ -219,6 +220,11 @@
             display: flex;
             align-items: center;
             text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .info-card:hover h3 {
+            color: #FF69B4;
         }
 
         .info-card i {
@@ -227,36 +233,39 @@
             font-size: 1.2rem;
             width: 1.2rem;
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, color 0.3s ease;
         }
 
         .info-card:hover i {
             transform: rotate(10deg);
+            color: #98FF98;
         }
 
         .info-card .info-item {
             display: flex;
             align-items: center;
             margin-bottom: 0.5rem;
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: calc(var(--order) * 0.2s);
         }
+
+        .info-card .info-item:nth-child(1) { --order: 1; }
+        .info-card .info-item:nth-child(2) { --order: 2; }
+        .info-card .info-item:nth-child(3) { --order: 3; }
+        .info-card .info-item:nth-child(4) { --order: 4; }
+        .info-card .info-item:nth-child(5) { --order: 5; }
+        .info-card .info-item:nth-child(6) { --order: 6; }
+        .info-card .info-item:nth-child(7) { --order: 7; }
+        .info-card .info-item:nth-child(8) { --order: 8; }
 
         .info-card .info-item i {
             margin-right: 0.5rem;
+            transition: color 0.3s ease;
         }
 
-        .fade-in-text {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .info-card .fade-in-text {
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .section.visible .fade-in-text {
-            opacity: 1;
-            transform: translateY(0);
+        .info-card:hover .info-item i {
+            color: #FF69B4;
         }
 
         @keyframes fadeIn {
@@ -429,21 +438,6 @@
             display: none;
         }
 
-        .cartoon-img {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .info-card:hover .cartoon-img {
-            transform: scale(1.1);
-        }
-
         footer {
             background: linear-gradient(90deg, #87CEEB, #98FF98);
             color: white;
@@ -479,11 +473,19 @@
             }
 
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 1.5rem;
+                margin-bottom: 0.8rem;
             }
 
             .hero-content p {
-                font-size: 1rem;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+            }
+
+            .cta-button {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+                margin: 0 0.3rem;
             }
 
             nav ul {
@@ -518,11 +520,6 @@
                 font-size: 1.2rem;
             }
 
-            .cta-button {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.9rem;
-            }
-
             .search-form {
                 padding: 1rem;
                 max-width: 100%;
@@ -550,13 +547,6 @@
 
             #search-result p strong {
                 font-size: 1rem;
-            }
-
-            .cartoon-img {
-                width: 80px;
-                height: 80px;
-                bottom: 5px;
-                right: 5px;
             }
         }
     </style>
@@ -597,7 +587,6 @@
                 <div class="info-item fade-in-text"><i class="fas fa-clock"></i> TANGGAL: 1–3 JULI 2025</div>
                 <div class="info-item fade-in-text"><i class="fas fa-clock"></i> WAKTU: 08.00–14.00 WIB</div>
                 <div class="info-item fade-in-text"><i class="fas fa-map-marker-alt"></i> LOKASI: KAMPUS SMPN 4 CIAMIS</div>
-                <img src="https://via.placeholder.com/100x100?text=Cartoon+1" alt="Cartoon Jadwal" class="cartoon-img">
             </div>
             <div class="info-card">
                 <h3><i class="fas fa-book"></i> DOKUMEN YANG DIBAWA</h3>
@@ -609,7 +598,6 @@
                 <div class="info-item fade-in-text"><i class="fas fa-birthday-cake"></i> FOTOKOPI AKTE KELAHIRAN (3 RANGKAP)</div>
                 <div class="info-item fade-in-text"><i class="fas fa-hand-holding-usd"></i> FOTOKOPI KIP/PKH/KIS/DTKS JIKA MEMILIKI (3 RANGKAP)</div>
                 <div class="info-item fade-in-text"><i class="fas fa-folder"></i> SEMUA BERKAS DIMASUKKAN KE MAP HIJAU (PUTRA) ATAU MERAH (PUTRI)</div>
-                <img src="https://via.placeholder.com/100x100?text=Cartoon+2" alt="Cartoon Dokumen" class="cartoon-img">
             </div>
         </div>
         <div class="warning">
