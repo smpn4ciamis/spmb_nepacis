@@ -17,23 +17,23 @@
         body {
             background: linear-gradient(135deg, #E6F3FA, #FFFFFF);
             color: #1E90FF;
-            line-height: 1.6;
+            line-height: 1.4;
             overflow-x: hidden;
         }
 
         header {
             background: linear-gradient(90deg, #1E90FF, #FFD700);
             color: white;
-            padding: 1.5rem 1rem;
+            padding: 1rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             transition: padding 0.3s;
         }
 
         header.scrolled {
-            padding: 1rem;
+            padding: 0.8rem;
         }
 
         .header-container {
@@ -42,10 +42,11 @@
             align-items: center;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 0.5rem;
         }
 
         .logo img {
-            height: 70px;
+            height: 50px;
             filter: brightness(0) invert(1);
             transition: transform 0.3s;
         }
@@ -57,25 +58,24 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 2.5rem;
+            gap: 1.5rem;
         }
 
         nav a {
             color: white;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.3s, transform 0.3s;
+            font-size: 1rem;
+            transition: color 0.3s;
         }
 
         nav a:hover {
             color: #FF69B4;
-            transform: translateY(-2px);
         }
 
         .hamburger {
             display: none;
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             transition: transform 0.3s;
         }
@@ -86,7 +86,7 @@
 
         .hero {
             background: linear-gradient(rgba(30, 144, 255, 0.6), rgba(255, 215, 0, 0.6)), url('https://via.placeholder.com/1200x600?text=SMPN+4+Ciamis') no-repeat center/cover;
-            height: 600px;
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -110,41 +110,41 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            padding: 0 1rem;
+            padding: 0 0.5rem;
         }
 
         .hero-content h1 {
             font-family: 'Poppins', sans-serif;
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            animation: fadeInUp 1s ease-out;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
         }
 
         .hero-content p {
-            font-size: 1.6rem;
-            margin-bottom: 2.5rem;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .cta-button {
             background: #FFD700;
             color: #1E90FF;
-            padding: 1.2rem 3rem;
+            padding: 0.8rem 2rem;
             text-decoration: none;
-            border-radius: 50px;
+            border-radius: 25px;
             font-weight: 600;
-            font-size: 1.2rem;
+            font-size: 1rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 0.3rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .cta-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             background: #FF69B4;
             color: white;
         }
@@ -154,16 +154,16 @@
         }
 
         .cta-button:hover i {
-            transform: translateX(5px);
+            transform: translateX(3px);
         }
 
         .section {
-            padding: 5rem 1rem;
+            padding: 2.5rem 0.5rem;
             max-width: 1200px;
             margin: 0 auto;
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .section.visible {
@@ -174,58 +174,38 @@
         .section h2 {
             font-family: 'Poppins', sans-serif;
             color: #1E90FF;
-            font-size: 3rem;
-            margin-bottom: 2.5rem;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
             text-align: center;
             text-transform: uppercase;
         }
 
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .info-card {
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
-            border: 2px solid transparent;
-            background-clip: padding-box;
-            position: relative;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            overflow: hidden;
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(120deg, #1E90FF, #FFD700, #1E90FF);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .info-card:hover::before {
-            opacity: 0.1;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E6F3FA;
+            transition: transform 0.3s ease;
         }
 
         .info-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
         .info-card h3 {
             font-family: 'Poppins', sans-serif;
             color: #1E90FF;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             text-transform: uppercase;
@@ -233,13 +213,20 @@
 
         .info-card i {
             color: #FFD700;
-            margin-right: 0.75rem;
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+            width: 1.2rem; /* Lebar tetap untuk sejajar */
+            text-align: center;
         }
 
-        .info-card:hover i {
-            transform: rotate(15deg);
+        .info-card .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card .info-item i {
+            margin-right: 0.5rem;
         }
 
         .info-card ul {
@@ -247,9 +234,10 @@
         }
 
         .info-card ul li {
-            margin-bottom: 1rem;
-            padding-left: 2rem;
-            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding-left: 0;
             text-transform: uppercase;
             font-weight: 600;
         }
@@ -259,97 +247,81 @@
             color: #FFD700;
             font-weight: bold;
             display: inline-block;
-            width: 1.5rem;
-            margin-left: -2rem;
-            font-size: 1.2rem;
-        }
-
-        .info-card p {
-            margin: 0.75rem 0;
-            display: flex;
-            align-items: center;
-            text-transform: uppercase;
-            font-weight: 600;
+            width: 1.2rem;
+            margin-right: 0.5rem;
+            text-align: center;
         }
 
         .warning {
             background: #FF69B4;
             color: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 2.5rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
             text-align: center;
             font-weight: 700;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
             text-transform: uppercase;
         }
 
         .warning:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
         }
 
         #search-class {
             background: linear-gradient(180deg, #E6F3FA, #FFFFFF);
-            padding: 4rem 1rem;
+            padding: 2.5rem 0.5rem;
         }
 
         .search-form {
-            max-width: 650px;
+            max-width: 500px;
             margin: 0 auto;
             text-align: center;
             background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .search-form input {
-            padding: 1.2rem;
+            padding: 0.8rem;
             width: 100%;
             border: 2px solid #FFD700;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-            font-size: 1.2rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
 
         .search-form input:focus {
             border-color: #1E90FF;
-            box-shadow: 0 0 10px rgba(30, 144, 255, 0.3);
             outline: none;
         }
 
         .search-form input::placeholder {
             color: #1E90FF;
             opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-
-        .search-form input:focus::placeholder {
-            opacity: 0;
         }
 
         .search-form button {
             background: linear-gradient(90deg, #1E90FF, #FFD700);
             color: white;
-            padding: 1.2rem 3rem;
+            padding: 0.8rem 2rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 25px;
             cursor: pointer;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1rem;
             display: inline-flex;
             align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            gap: 0.3rem;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
         .search-form button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transform: scale(1.05);
         }
 
         .search-form button i {
@@ -357,50 +329,48 @@
         }
 
         .search-form button:hover i {
-            transform: translateX(5px);
+            transform: translateX(3px);
         }
 
         #search-result {
-            margin-top: 2.5rem;
+            margin-top: 1.5rem;
             background: white;
-            padding: 2.5rem;
-            border-radius: 20px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
             display: none;
             animation: slideIn 0.5s ease-out;
         }
 
         .loader {
-            border: 6px solid #E6F3FA;
-            border-top: 6px solid #FFD700;
+            border: 4px solid #E6F3FA;
+            border-top: 4px solid #FFD700;
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1.2s linear infinite;
-            margin: 2rem auto;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
             display: none;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
 
         footer {
             background: linear-gradient(90deg, #1E90FF, #FFD700);
             color: white;
             text-align: center;
-            padding: 3.5rem 1rem;
-            margin-top: 4rem;
+            padding: 2rem 0.5rem;
+            margin-top: 2rem;
         }
 
         footer a {
             color: #FF69B4;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s ease, transform 0.3s ease;
+            transition: color 0.3s ease;
         }
 
         footer a:hover {
             color: white;
-            transform: scale(1.1);
         }
 
         @keyframes fadeInUp {
@@ -409,7 +379,7 @@
         }
 
         @keyframes slideIn {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -420,27 +390,27 @@
 
         @media (max-width: 768px) {
             .hero {
-                height: 400px;
+                height: 300px;
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .hero-content p {
-                font-size: 1.2rem;
+                font-size: 1rem;
             }
 
             nav ul {
                 display: none;
                 flex-direction: column;
                 position: absolute;
-                top: 80px;
+                top: 60px;
                 left: 0;
                 width: 100%;
                 background: #1E90FF;
-                padding: 1.5rem;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                padding: 1rem;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             }
 
             nav ul.active {
@@ -456,30 +426,31 @@
             }
 
             .info-card {
-                padding: 2rem;
+                padding: 1rem;
             }
 
             .info-card h3 {
-                font-size: 1.5rem;
+                font-size: 1.2rem;
             }
 
             .cta-button {
-                padding: 1rem 2.5rem;
-                font-size: 1.1rem;
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
             }
 
             .search-form {
-                padding: 1.5rem;
+                padding: 1rem;
+                max-width: 100%;
             }
 
             .search-form input {
-                padding: 1rem;
-                font-size: 1.1rem;
+                padding: 0.6rem;
+                font-size: 0.9rem;
             }
 
             .search-form button {
-                padding: 1rem 2.5rem;
-                font-size: 1.1rem;
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -491,12 +462,12 @@
                 <img src="logo-smpn4-ciamis.png" alt="SMPN 4 CIAMIS">
             </div>
             <nav>
-<!--                 <ul id="nav-menu">
+                <ul id="nav-menu">
                     <li><a href="#home">BERANDA</a></li>
                     <li><a href="#info">INFORMASI</a></li>
                     <li><a href="#search-class">CARI KELAS</a></li>
                     <li><a href="#contact">KONTAK</a></li>
-                </ul> -->
+                </ul>
             </nav>
             <div class="hamburger" onclick="toggleMenu()">
                 <i class="fas fa-bars"></i>
@@ -507,33 +478,31 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>DAFTAR ULANG SPMB SMPN 4 CIAMIS</h1>
-			<h1>TAHUN PELAJARAN 2025/2026</h1>
-            <!-- <p>BERSATU DAN BERKEMBANG BERSAMA KAMI! CEK KELAS DAN LENGKAPI DOKUMEN SEKARANG!</p> -->
+            <h1>TAHUN PELAJARAN 2025/2026</h1>
             <a href="#info" class="cta-button"><i class="fas fa-info-circle"></i> LIHAT INFORMASI</a>
             <a href="#search-class" class="cta-button"><i class="fas fa-search"></i> CARI KELAS SAYA</a>
         </div>
     </section>
 
     <section class="section" id="info">
-        
         <div class="info-grid">
             <div class="info-card">
                 <h3><i class="fas fa-calendar-alt"></i> JADWAL</h3>
-                <p><i class="fas fa-clock"></i> TANGGAL: 1–3 JULI 2025</p>
-                <p><i class="fas fa-clock"></i> WAKTU: 08.00–14.00 WIB</p>
-                <p><i class="fas fa-map-marker-alt"></i> LOKASI: KAMPUS SMPN 4 CIAMIS</p>
+                <div class="info-item"><i class="fas fa-clock"></i> TANGGAL: 1–3 JULI 2025</div>
+                <div class="info-item"><i class="fas fa-clock"></i> WAKTU: 08.00–14.00 WIB</div>
+                <div class="info-item"><i class="fas fa-map-marker-alt"></i> LOKASI: KAMPUS SMPN 4 CIAMIS</div>
             </div>
             <div class="info-card">
                 <h3><i class="fas fa-file-alt"></i> DOKUMEN YANG DIBAWA</h3>
                 <ul>
-                    <li>PRINT OUT PENDAFTARAN</li>
-                    <li>PRINT OUT BUKTI DITERIMA</li>
-                    <li>FOTOKOPI IJAZAH YANG DILEGALISIR (JIKA ADA)/SURAT KETERANGAN LULUS (SKL)</li>
-                    <li>FOTOKOPI KARTU KELUARGA (3 RANGKAP)</li>
-                    <li>FOTOKOPI KTP ORANG TUA (3 RANGKAP)</li>
-                    <li>FOTOKOPI AKTE KELAHIRAN (3 RANGKAP)</li>
-                    <li>FOTOKOPI KIP/PKH/KIS/DTKS JIKA MEMILIKI (3 RANGKAP)</li>
-                    <li>SEMUA BERKAS DIMASUKKAN KE MAP HIJAU (PUTRA) ATAU MERAH (PUTRI)</li>
+                    <li><i class="fas fa-file"></i> PRINT OUT PENDAFTARAN</li>
+                    <li><i class="fas fa-file"></i> PRINT OUT BUKTI DITERIMA</li>
+                    <li><i class="fas fa-file"></i> FOTOKOPI IJAZAH YANG DILEGALISIR (JIKA ADA)/SURAT KETERANGAN LULUS (SKL)</li>
+                    <li><i class="fas fa-file"></i> FOTOKOPI KARTU KELUARGA (3 RANGKAP)</li>
+                    <li><i class="fas fa-file"></i> FOTOKOPI KTP ORANG TUA (3 RANGKAP)</li>
+                    <li><i class="fas fa-file"></i> FOTOKOPI AKTE KELAHIRAN (3 RANGKAP)</li>
+                    <li><i class="fas fa-file"></i> FOTOKOPI KIP/PKH/KIS/DTKS JIKA MEMILIKI (3 RANGKAP)</li>
+                    <li><i class="fas fa-folder"></i> SEMUA BERKAS DIMASUKKAN KE MAP HIJAU (PUTRA) ATAU MERAH (PUTRI)</li>
                 </ul>
             </div>
         </div>
@@ -581,9 +550,7 @@
         const revealSection = () => {
             sections.forEach((section, index) => {
                 const sectionTop = section.getBoundingClientRect().top;
-                const delay = index * 0.2;
-                if (sectionTop < window.innerHeight - 100) {
-                    section.style.transitionDelay = `${delay}s`;
+                if (sectionTop < window.innerHeight - 50) {
                     section.classList.add('visible');
                 }
             });
@@ -595,7 +562,7 @@
         window.addEventListener('scroll', () => {
             const scrollPosition = window.pageYOffset;
             const hero = document.querySelector('.hero');
-            hero.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+            hero.style.backgroundPositionY = `${scrollPosition * 0.3}px`;
         });
 
         // Student data (5 samples)
@@ -613,11 +580,9 @@
             const resultDiv = document.getElementById('search-result');
             const loader = document.getElementById('loader');
 
-            // Show loader
             loader.style.display = 'block';
             resultDiv.style.display = 'none';
 
-            // Simulate API delay with feedback
             setTimeout(() => {
                 loader.style.display = 'none';
                 const found = students.find(student => 
@@ -634,7 +599,7 @@
                     resultDiv.innerHTML = '<p><i class="fas fa-exclamation-circle" style="color: #FF69B4;"></i> DATA TIDAK DITEMUKAN. SILAKAN PERIKSA NAMA ATAU HUBUNGI PANITIA.</p>';
                 }
                 resultDiv.style.display = 'block';
-            }, 1200);
+            }, 1000);
         }
     </script>
 </body>
